@@ -7,7 +7,7 @@
   - name: start docker
     service: name=docker state=started
   - name: Install pip
-     apt:
+    apt:
       name: python-pip
       update_cache: yes
       state: present
