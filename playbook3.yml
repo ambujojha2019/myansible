@@ -6,11 +6,10 @@
     yum: name=docker state=present
   - name: start docker
     service: name=docker state=started
-  - name: install git
-    yum: name=git state=present
-  - name: get the dockerfile from githib
-    git: repo=https://github.com/edureka-devops/projCert.git dest=/tmp/gitrepo
-  - name: build dockerfile
-    command: chdir=/tmp/gitrepo docker build -t devopsedu/webapp .
+  - name: pull a docker image
+    docker_image:
+          name: devopsedu/webapp
+          tag: latest
+          source: pull
   - name: run the dockerfile
-    command: docker run -itd -P devopsedu/webapp
+    command: docker run -itd -P devopsedu/webapp:latest
