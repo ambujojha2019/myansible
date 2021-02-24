@@ -6,6 +6,8 @@
     yum: name=docker state=present
   - name: start docker
     service: name=docker state=started
+   - name: Install
+     command: "pip install docker-py"
   - name: pull a docker image
     docker_image:
           name: devopsedu/webapp
